@@ -1,0 +1,31 @@
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Terraform crash logs
+crash.log
+*.tfplan
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Local .terraform directory (plugin binaries, cache, etc.)
+.terraform/
+
+# Variable definitions containing secrets
+
+
+# Sensitive output files
+*.pem
+*.key
+*.crt
+
+# IDE-specific files (optional but recommended)
+.vscode/
+.idea/
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
