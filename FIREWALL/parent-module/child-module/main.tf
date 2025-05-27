@@ -8,6 +8,7 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = [var.vnet_address_space]
   location            = var.location
   resource_group_name = var.resource_group_name
+  depends_on = [azurerm_resource_group.this]
 }
 
 resource "azurerm_subnet" "firewall_subnet" {
@@ -15,6 +16,7 @@ resource "azurerm_subnet" "firewall_subnet" {
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = [var.subnet_cidr]
+    depends_on = [azurerm_virtual_network.vnet]
 }
 
 resource "azurerm_public_ip" "firewall_pip" {
@@ -23,6 +25,7 @@ resource "azurerm_public_ip" "firewall_pip" {
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
+  depends_on = [azurerm_resource_group.this]
 }
 
 resource "azurerm_firewall" "firewall" {
